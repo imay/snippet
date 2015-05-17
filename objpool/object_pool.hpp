@@ -17,9 +17,10 @@ public:
     }
 
     template<typename T>
-    void add(T* t) {
+    T* add(T* t) {
         std::lock_guard<std::mutex> l(_lock);
         _objects.push_back(new Object<T>(t));
+        return t;
     }
 
 private:
